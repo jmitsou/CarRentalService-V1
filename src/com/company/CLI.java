@@ -13,12 +13,12 @@ public class CLI {
             try {
                 num = Integer.parseInt(input.nextLine());
                 if (num > max || num < min){
-                    System.out.println("Enter a number between 1-4");
+                    System.out.println("Enter a number between " + min + "-" + max);
                 }else {
                     break;
                 }
             } catch (NumberFormatException nfe) {
-                System.out.print("Try again: ");
+                System.out.println("Enter a number between " + min + "-" + max);
             }
         return num;
     }
