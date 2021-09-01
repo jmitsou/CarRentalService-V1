@@ -7,6 +7,7 @@ public class Car {
     private String color;
     private int price;
     private boolean rented;
+    private String customerName;
 
 
     public String getMake() {
