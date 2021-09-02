@@ -16,12 +16,13 @@ public class User {
     }
 
     public static void credentials(){
+
+
         System.out.println("Please enter your username & password: ");
         System.out.print("\nUserName: ");
         String usr = CLI.getStr() ;
         System.out.print("Password: ");
         String pass = CLI.getStr();
-        System.out.println("test");
 
         for (int i = 0; i < userDB.size(); i++) {
             if ( usr.equals(userDB.get(i).userName) && pass.equals(userDB.get(i).password)){
