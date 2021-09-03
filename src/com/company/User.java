@@ -16,8 +16,6 @@ public class User {
     }
 
     public static void credentials(){
-
-
         System.out.println("Please enter your username & password: ");
         System.out.print("\nUserName: ");
         String usr = CLI.getStr() ;
@@ -26,13 +24,15 @@ public class User {
 
         for (int i = 0; i < userDB.size(); i++) {
             if ( usr.equals(userDB.get(i).userName) && pass.equals(userDB.get(i).password)){
+                System.out.println("\nHello " + userDB.get(i).userName.toUpperCase() + ", what would you like to" +
+                        " do:" +
+                        " ");
                 Menu.start();
-            }else{
-                System.out.println("\nUsername or Password are incorrect, Please try again\n");
-                credentials();
             }
-        }
 
+        }
+        System.out.println("\nUsername or Password are incorrect, Please try again\n");
+        credentials();
 
     }
 
@@ -42,10 +42,10 @@ public class User {
         String usr = CLI.getStr();
         System.out.print("Enter your password: ");
         String pass = CLI.getStr();
-        System.out.println("\nThank you your credentials have been stored.");
+        System.out.println("\nThank you your credentials have been stored.\n");
         User newUser = new User(usr,pass);
         userDB.add(newUser);
-        Menu.start();
+        credentials();
     }
 
     public String getUserName() {

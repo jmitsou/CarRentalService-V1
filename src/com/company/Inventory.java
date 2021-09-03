@@ -1,6 +1,9 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
+import static com.company.User.userDB;
 
 public class Inventory {
 

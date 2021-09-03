@@ -1,5 +1,7 @@
 package com.company;
 
+import static com.company.User.userDB;
+
 public class Menu {
 
 
@@ -11,8 +13,6 @@ public class Menu {
 
         do { //Check to see if all the cars have been rented
             if (lot.available.size() > 0) {
-
-                System.out.println("\nAre you here to: ");
                 System.out.println("1) Rent a car (" + lot.available.size() + ")");
                 System.out.println("2) Return a car (" + lot.rented.size() + ")");
                 System.out.print("\nSelect an option:");
@@ -27,12 +27,19 @@ public class Menu {
                     lot.rentalProcessor(enteredValue, selCar);
 
                 } else if (enteredValue == 2 && lot.rented.size() > 0) {
-                    System.out.println("\nRented Cars: ");
-                    lot.displayCars(2);
-                    System.out.println("\nEnter a number to select the car you'd like to return:");
-                    System.out.print("\nCar Selection: ");
-                    int selCar = CLI.getNum(1, 4);
-                    lot.rentalProcessor(enteredValue, selCar);
+                        System.out.print("Please confirm password.\nPassword: ");
+                        String conf = CLI.getStr();
+                        for (User user : userDB) {
+                            if (conf.equals(user.getPassword())) {
+                                System.out.println("\nRented Cars: ");
+                                lot.displayCars(2);
+                                System.out.println("\nEnter a number to select the car you'd like to return:");
+                                System.out.print("\nCar Selection: ");
+                                int selCar = CLI.getNum(1, 4);
+                                lot.rentalProcessor(enteredValue, selCar);
+                            }
+                        }
+                    System.out.println("Sorry password was incorrect. Try again");
 
                 }
 
@@ -63,7 +70,6 @@ public class Menu {
         return choice;
     }
 
-
     public static void login() {
         //Adds temp user to have an account in to match against
         User admin = new User("admin", "password");
@@ -71,7 +77,7 @@ public class Menu {
 
         System.out.println("\nPlease login or sign-up: ");
         System.out.println("\n1)Sign up");
-        System.out.println("2)Sign in");
+        System.out.println("2)Login");
         System.out.println("3)Exit");
         System.out.print("\nSelection: ");
         int option = CLI.getNum(1, 3);
